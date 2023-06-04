@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="section-header">
+        <p class="sect-one">LOGO</p>
+        <hr>
+        <p class="sect-two">PLACEHOLDER</p>
+    </div>
+    <div class="title">
+        <h2>Log in</h2>
+        <p>Welcome back! Please enter your details</p>
+    </div>
+    <form  #form="ngForm" action="" (ngSubmit)="onSubmit(form)">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <div class="error-field">
+                <input type="email" name="email" id="email" class="login-field" placeholder="Enter your email" required [(ngModel)]="login.email"
+                       #emailField="ngModel"
+            />
+                    <span [class]="form.submitted && emailField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
+            </div>
+        </div>
+        <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-span">
+                    <div class="error-field">
+                        <input [type]="changeType ? 'password' : 'text'" name="password" id="password"  placeholder="Enter your password" class="login-field" required [(ngModel)]="login.password"
+                       #passwordField="ngModel"
+            />
+                        <span class="icon-span" (click)="viewPass()"><i [ngClass]="visible ? 'bi bi-eye' : 'bi bi-eye-slash'"></i></span>
+                        <span [class]="form.submitted && passwordField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
+                    </div>
+                </div>
+        </div>
+        <div class="form-section">
+            <div class="check">
+                <input type="checkbox" name="remember" id="remember"/>
+                <label for="remember">Remember me</label>
+            </div>
+            <div class="forgotpwd">
+                Forgot password
+            
+        </div>
+        </div>
+        <!-- <div class="error-message">{{postErrorMessage}}</div> -->
+        <div class="login-button">
+            <button class="log-btn" >Log in</button>
+        </div>
+    </form>
+</div>

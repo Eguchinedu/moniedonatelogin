@@ -1,0 +1,49 @@
+ 
+    <div mat-dialog-content>
+    <div class="close-btn">
+        
+              <i class="bi bi-x-lg" (click)="closeDialog()"></i>
+
+    </div>
+ <form  #form="ngForm" action="" (ngSubmit)="onSubmit(form)">
+        <div class="form-group">
+            <label for="firstName">FirstName</label>
+            <div class="error-field">
+                <input type="text" name="firstName" id="firstName" class="login-field"  required [(ngModel)]="createUser.firstName"
+                       #firstNameField="ngModel"
+            />
+                    <span [class]="form.submitted && firstNameField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">LastName</label>
+            <div class="error-field">
+                <input type="text" name="lastName" id="lastName" class="login-field"  required [(ngModel)]="createUser.lastName"
+                       #lastNameField="ngModel"
+            />
+                    <span [class]="form.submitted && lastNameField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <div class="error-field">
+                <input type="text" name="username" id="username" class="login-field"  required [(ngModel)]="createUser.username"
+                       #usernameField="ngModel"
+            />
+                    <span [class]="form.submitted && usernameField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <div class="error-field">
+                <input type="email" name="email" id="email" class="login-field" placeholder="Enter your email" required [(ngModel)]="createUser.email"
+                       #emailField="ngModel"
+            />
+                    <span [class]="form.submitted && emailField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
+            </div>
+        </div>
+        <div class="login-button">
+            <button mat-raised-button color="primary" >Create</button>
+        </div>
+    </form>
+    </div>

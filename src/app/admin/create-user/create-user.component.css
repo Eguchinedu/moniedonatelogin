@@ -1,0 +1,87 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '@angular/cdk/overlay-prebuilt.css';
+.dialog-background {
+  background-color: rgba(113, 113, 113, 0.44);
+  backdrop-filter: blur(4px);
+}
+
+.container{
+    padding: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.login-field {
+    padding: 10px 14px;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 8px;
+    border: 2px solid #F7F8FF;
+
+}
+.error-field {
+    display: flex;
+    align-items: center;
+}
+.error-span {
+    position: relative;
+    padding: 0 5px;
+    display: none;
+}
+.error-show {
+    position: relative;
+    padding: 0 5px;
+    display: block;
+}
+.bi-x-circle {
+    position: absolute;
+    top: -10px;
+    color: red;
+}
+input:focus {
+    outline: none;
+}
+label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.close-btn {
+    margin: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.close {
+    background-color: red;
+    cursor: pointer;
+}
+.bi-x-lg {
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+.login-button {
+    margin: 20px 0;
+}
+
+:host ::ng-deep mat-dialog-content {
+    background-color: red;
+}
+
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 1024px) {
+}
+@media only screen and (max-width: 768px) {
+}
+ @media only screen and (max-width: 480px) {
+ }

@@ -1,0 +1,17 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+table {
+  width: 100%;
+}
+.mat-elevation-z8{
+  padding: 30px;
+  border-radius: 10px;
+}
+.container{
+  padding-top: 50px;
+}
+.create-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px 0;
+}
