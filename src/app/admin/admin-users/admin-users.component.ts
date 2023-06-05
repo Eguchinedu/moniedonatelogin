@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/services/auth.service';
 import { CreateUserComponent } from '../create-user/create-user.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -22,15 +23,20 @@ export class AdminUsersComponent implements OnInit {
     'Role',
     'CreatedDate',
     'LastLogin',
+    'Actions',
   ];
-  constructor(private auth: AuthService, private dialog: MatDialog) {}
-ngOnInit(): void {
+  constructor(
+    private auth: AuthService,
+    private dialog: MatDialog,
+    private toastr: ToastrService
+  ) {}
+  ngOnInit(): void {
     this.loadUser();
-}
+  }
   userlist: any;
-  dataSource:any;
-  @ViewChild(MatPaginator) paginator !: MatPaginator;
-  @ViewChild(MatSort) sort !: MatSort;
+  dataSource: any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   loadUser() {
     this.auth.getUsers().subscribe((result) => {
@@ -38,14 +44,25 @@ ngOnInit(): void {
       this.dataSource = new MatTableDataSource(this.userlist);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(result);  
+      console.log(result);
     });
   }
 
-  createUser(){
+  createUser() {
     this.dialog.open(CreateUserComponent, {
       width: '350px',
       hasBackdrop: true,
     });
+  }
+  deleteUser(id: number) {
+    console.log('user to delete:' + id);
+    // delete this.userlist[id]
+    this.auth
+      .deleteUser(id)
+      .subscribe((result) => {
+        console.log(result);
+        this.toastr.success('User deleted successfully');
+        this.loadUser();
+      });
   }
 }

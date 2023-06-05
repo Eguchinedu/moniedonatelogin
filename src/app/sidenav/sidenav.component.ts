@@ -11,7 +11,10 @@ import { AuthService } from '../services/auth.service';
 export class SidenavComponent implements OnInit, DoCheck {
   isMenuRequired = false;
   constructor(private router: Router,private auth: AuthService) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.isLoggedIn())
+    console.log(this.setRoles(''))
+  }
   ngDoCheck(): void {
     let currentUrl = this.router.url;
     if (currentUrl.includes('/login')) {
@@ -19,6 +22,12 @@ export class SidenavComponent implements OnInit, DoCheck {
     } else {
       this.isMenuRequired = true;
     }
+  }
+  setRoles(roles: string) {
+    return this.auth.roleMatch(roles);
+  }
+  isLoggedIn(){
+    return this.auth.isLoggedIn()
   }
   signOut() {
     this.auth.signOut();

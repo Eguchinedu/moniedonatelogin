@@ -8,11 +8,12 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
+import { AdminDonationsComponent } from './admin-donations/admin-donations.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminUsersComponent, CreateUserComponent],
+  declarations: [AdminComponent, AdminUsersComponent, CreateUserComponent, AdminDonationsComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -23,6 +24,11 @@ import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/d
       {
         path: 'admin/admin-users',
         component: AdminUsersComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'admin/admin-donations',
+        component: AdminDonationsComponent,
         canActivate: [AuthGuard],
       },
     ]),

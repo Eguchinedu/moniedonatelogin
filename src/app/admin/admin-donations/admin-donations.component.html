@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="donor-header">
+        <h2>DONATIONS</h2>
+    </div>
+  <div class="mat-elevation-z8">
+  <mat-table mat-sort [dataSource]="dataSource">
+
+   
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell  *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell  *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell  *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="Amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="TransactionId">
+      <th mat-header-cell  *matHeaderCellDef> Transaction ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.trxRef}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Status">
+      <th mat-header-cell  *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.status ===true ? 'success': 'pending'}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements">
+</mat-paginator>
+
+</div>
+
+</div>
+

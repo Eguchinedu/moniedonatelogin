@@ -9,12 +9,13 @@ table {
 .container{
   padding-top: 50px;
 }
-.create-button {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin: 10px 0;
+.donor-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
-.bi-trash3-fill{
-  color: red;
+.donor-header >  h2 {
+    font-size: 30px;
+    font-weight: 900;
 }

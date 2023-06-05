@@ -7,11 +7,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material/dialog';
 import { DialogModule } from '@angular/cdk/dialog';
-import {MatButtonModule} from '@angular/material/button';  
-
-import { OverlayModule } from '@angular/cdk/overlay';
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -27,7 +25,6 @@ import { OverlayModule } from '@angular/cdk/overlay';
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
-    OverlayModule,
     DialogModule
   ],
 })

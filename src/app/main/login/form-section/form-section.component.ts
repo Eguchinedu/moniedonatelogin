@@ -47,11 +47,13 @@ export class FormSectioncomponent implements OnInit {
         if (result.success == true && this.login.email === 'admin@imprinno.com') {
           this.toastr.success('Logged in as admin', 'Welcome!');
           this.auth.storeToken(result.token);
+          this.auth.setRoles('Admin');
           this.router.navigate(['/admin']);
           console.log(result);
         } else if (result.success == true){
           this.toastr.success('Logged in as user', 'Welcome!');
           this.auth.storeToken(result.token);
+          this.auth.setRoles('User');
           this.router.navigate(['/user']);
         } else {
           this.toastr.error(result.errorReason, 'Error!');
