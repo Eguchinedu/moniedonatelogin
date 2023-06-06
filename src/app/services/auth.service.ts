@@ -21,6 +21,9 @@ export class AuthService {
     console.log('geting data from login service', data);
     return this.http.post(this.baseUrl + 'Auth/login', data);
   }
+  resetPassword(data: any): Observable<any> {
+    return this.http.post(this.baseUrl + 'Auth/reset-password', data);
+  }
   getDonations(): Observable<any> {
     return this.http.get(this.baseUrl + 'Donation');
   }

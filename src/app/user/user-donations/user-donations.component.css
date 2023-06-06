@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+.mat-elevation-z8{
+  padding: 30px;
+  border-radius: 10px;
+}
+.container{
+  padding-top: 50px;
+}
+.donor-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.donor-header >  h2 {
+    font-size: 30px;
+    font-weight: 900;
+}

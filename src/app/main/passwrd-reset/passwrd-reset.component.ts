@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
-import { ILogin } from 'src/app/types/login';
+import { IReset } from 'src/app/types/reset-pass';
 
 @Component({
-  selector: 'app-form-section',
-  templateUrl: './form-section.component.html',
-  styleUrls: ['./form-section.component.css'],
+  selector: 'app-passwrd-reset',
+  templateUrl: './passwrd-reset.component.html',
+  styleUrls: ['./passwrd-reset.component.css'],
 })
-export class FormSectioncomponent implements OnInit {
+export class PasswrdResetComponent implements OnInit {
   visible: boolean = true;
   changeType: boolean = true;
 
-  originalLogin: ILogin = {
+  originalReset: IReset = {
     email: null,
     password: null,
+    code: null,
   };
-  login: ILogin = { ...this.originalLogin };
+  reset: IReset = { ...this.originalReset };
   postError = false;
   postErrorMessage = '';
 
@@ -27,13 +28,12 @@ export class FormSectioncomponent implements OnInit {
     private auth: AuthService,
     private router: Router
   ) {}
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
   viewPass() {
     this.visible = !this.visible;
     this.changeType = !this.changeType;
   }
+
   onHttpError(errorResponse: any) {
     console.log('error: ', errorResponse);
     this.postError = true;
@@ -42,28 +42,20 @@ export class FormSectioncomponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log('in onSubmit: ', form.value);
     if (form.valid) {
-      this.auth.login(this.login).subscribe((result) => {
+      this.auth.resetPassword(this.reset).subscribe((result) => {
         console.log('result', result);
-        if (result.success == true && this.login.email === 'eguchinedu18@gmail.com') {
-          this.toastr.success('Logged in as admin', 'Welcome!');
-          this.auth.storeToken(result.token);
-          this.auth.setRoles('Admin');
-          this.router.navigate(['/admin']);
+        if (result.success == true) {
+          this.toastr.success('Password reset successfully', 'Success!');
+          this.router.navigate(['/login']);
           console.log(result);
-        } else if (result.success == true){
-          this.toastr.success('Logged in as user', 'Welcome!');
-          this.auth.storeToken(result.token);
-          this.auth.setRoles('User');
-          this.router.navigate(['/user']);
         } else {
           this.toastr.error(result.errorReason, 'Error!');
-
         }
       });
     } else if (
-      form.value.email == null || form.value.email == '' 
-      && 
-      form.value.password == null || form.value.password == ''
+      form.value.email == null ||
+      (form.value.email == '' && form.value.password == null) ||
+      form.value.password == ''
     ) {
       this.toastr.error('Email or Password field cannot be empty', 'Error!');
     } else if (form.value.email == null || form.value.email == '') {
