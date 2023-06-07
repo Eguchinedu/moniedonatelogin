@@ -24,9 +24,6 @@
             <a class="nav-link" aria-current="page" 
             *ngIf="setRoles('Admin')" routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/admin/admin-users']" >Users</a>
-            <a class="nav-link" aria-current="page" 
-            *ngIf="setRoles('User')" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/user/user-users']" >Users</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active"

@@ -1,6 +1,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 table {
-  width: 100%;
+  width: 100%
 }
 .mat-elevation-z8{
   padding: 30px;

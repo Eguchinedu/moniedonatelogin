@@ -38,6 +38,9 @@ export class AdminUsersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  setRoles(roles: string) {
+    return this.auth.roleMatch(roles);
+  }
   loadUser() {
     this.auth.getUsers().subscribe((result) => {
       this.userlist = result;
@@ -54,15 +57,13 @@ export class AdminUsersComponent implements OnInit {
       hasBackdrop: true,
     });
   }
-  deleteUser(id: number) {
-    console.log('user to delete:' + id);
+  deleteUser(name: string) {
+    console.log('user to delete:' + name);
     // delete this.userlist[id]
-    this.auth
-      .deleteUser(id)
-      .subscribe((result) => {
-        console.log(result);
-        this.toastr.success('User deleted successfully');
-        this.loadUser();
-      });
+    this.auth.deleteUser(name).subscribe((result) => {
+      console.log(result);
+      this.toastr.success('User deleted successfully');
+      this.loadUser();
+    });
   }
 }

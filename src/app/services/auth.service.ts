@@ -33,8 +33,8 @@ export class AuthService {
   getUsers(): Observable<any> {
     return this.http.get(this.baseUrl + 'User');
   }
-  deleteUser(id: number):Observable<any>{
-    return this.http.delete(this.baseUrl + 'User/' + id)
+  deleteUser(name: string):Observable<any>{
+    return this.http.delete(this.baseUrl + 'User/username/' + name)
   }
 
   storeToken(tokenValue: string) {

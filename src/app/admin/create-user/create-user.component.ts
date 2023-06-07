@@ -32,6 +32,13 @@ export class CreateUserComponent implements OnInit {
   ) {}
   ngOnInit() {}
 
+  loadUser() {
+    this.auth.getUsers().subscribe((result) => {
+      console.log(result);
+      location.reload(); // refresh the page
+       this.ngOnInit();
+    });
+  }
  
   onHttpError(errorResponse: any) {
     console.log('error: ', errorResponse);
@@ -47,9 +54,9 @@ export class CreateUserComponent implements OnInit {
       this.auth.createUser(this.createUser).subscribe((result) => {
         console.log('result', result);
         if (result.success == true) {
-          this.toastr.success('User created successfully');
           this.closeDialog();
-          console.log(result);
+          this.toastr.success('User created successfully');
+          this.loadUser();
         } else {
           this.toastr.error(result.errorReason, 'Error!');
         }
