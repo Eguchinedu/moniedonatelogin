@@ -9,11 +9,12 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { AdminDonationsComponent } from './admin-donations/admin-donations.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminUsersComponent, CreateUserComponent, AdminDonationsComponent],
+  declarations: [AdminComponent, AdminUsersComponent, CreateUserComponent, AdminDonationsComponent, DeleteUserComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -36,6 +37,6 @@ import { AdminDonationsComponent } from './admin-donations/admin-donations.compo
   providers: [
     
   ],
-  entryComponents: [CreateUserComponent],
+  entryComponents: [CreateUserComponent, DeleteUserComponent],
 })
 export class AdminModule {}

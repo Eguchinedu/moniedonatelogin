@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AdminDonationsComponent implements OnInit {
   displayedColumns: string[] = [
-    'Id',
+    'CreatedDate',
     'Name',
     'Email',
     'Amount',

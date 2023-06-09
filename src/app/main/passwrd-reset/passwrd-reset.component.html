@@ -9,40 +9,51 @@
         <h2>Reset Password</h2>
         <p>Please enter your details and code sent via email</p>
     </div>
-    <form  #form="ngForm" action="" (ngSubmit)="onSubmit(form)">
-        <div class="form-group">
-            <label for="email">Email</label>
-            <div class="error-field">
-                <input type="email" name="email" id="email" class="login-field" placeholder="Enter your email" required [(ngModel)]="reset.email"
-                       #emailField="ngModel"
-            />
-                    <span [class]="form.submitted && emailField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
-            </div>
-        </div>
-        <div class="form-group">
-                <label for="password">Password</label>
-                <div class="password-span">
-                    <div class="error-field">
-                        <input [type]="changeType ? 'password' : 'text'" name="password" id="password"  placeholder="Enter a valid password" class="login-field" required [(ngModel)]="reset.password"
-                       #passwordField="ngModel"
-            />
-                        <span class="icon-span" (click)="viewPass()"><i [ngClass]="visible ? 'bi bi-eye' : 'bi bi-eye-slash'"></i></span>
-                        <span [class]="form.submitted && passwordField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
-                    </div>
-                </div>
-        </div>
+    <form   action="" (ngSubmit)="onSubmit()" [formGroup]="resetForm">
         <div class="form-group">
                 <label for="code">Code</label>
                 <div class="password-span">
                     <div class="error-field">
-                        <input type="text" name="code" id="code"  placeholder="Enter your code" class="login-field" required [(ngModel)]="reset.code"
-                       #codeField="ngModel"
+                        <input type="text" name="code" id="code"  placeholder="Enter your code" class="login-field" formControlName="code" required 
             />
-                        
-                        <span [class]="form.submitted && codeField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
+                        <span [class]="resetForm.controls['code'].dirty && resetForm.hasError('required', 'code') ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
                     </div>
                 </div>
         </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <div class="error-field">
+                <input type="email" name="email" id="email" class="login-field" placeholder="Enter your email" formControlName="email" required 
+            />
+                    <span [class]="resetForm.controls['email'].dirty && resetForm.hasError('required', 'email') ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
+            </div>
+        </div>
+        <div class="form-group">
+                <label for="password">New Password</label>
+                <div class="password-span">
+                    <div class="error-field">
+                        <input [type]="changeType ? 'password' : 'text'" name="password" id="password" formControlName="password"  placeholder="Enter a valid password" class="login-field" required 
+            />
+                        <span class="icon-span" (click)="viewPass()"><i [class]="visible ? 'bi bi-eye' : 'bi bi-eye-slash'"></i></span>
+                        <span [class]="resetForm.controls['password'].dirty && resetForm.hasError('required', 'password') ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
+                    </div>
+                </div>
+        </div>
+        <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="password-span">
+                    <div class="error-field">
+                        <input [type]="changeType2 ? 'password' : 'text'"  id="confirmPassword"  placeholder="Confirm your password" formControlName="confirmPassword" class="login-field" required 
+            />
+                        <span class="icon-span" (click)="viewPass2()"><i [class]="visible2 ? 'bi bi-eye' : 'bi bi-eye-slash'"></i></span>
+                        <span [class]="resetForm.controls['confirmPassword'].dirty && resetForm.hasError('required', 'confirmPassword') ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
+                    </div>
+                </div>
+        </div>
+        <div class="match-error">
+            <p *ngIf="resetForm.errors?.['passwordmatcherror']" class="alert alert-danger">Passwords do not match!!</p>
+        </div>
+        
         <div class="form-section">
             <div class="forgotpwd">
                 <a class="nav-link" aria-current="page" 
@@ -58,7 +69,7 @@
         </div>
         
         <div class="login-button">
-            <button class="log-btn" >Reset</button>
+            <button class="log-btn" [disabled]="!resetForm.valid" >Reset</button>
         </div>
     </form>
     </div>

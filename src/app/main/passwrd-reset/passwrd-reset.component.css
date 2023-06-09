@@ -139,6 +139,13 @@ label {
 .log-btn:hover {
     background-color: var(--text-one);
 }
+.log-btn:disabled {
+      background:  #fff;
+      border: 2px solid #D0D5DD;
+   color: #ccc;
+   cursor: no-drop;
+
+}
 .error-message {
     color: red;
     font-size: 14px;

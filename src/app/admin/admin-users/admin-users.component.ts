@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/services/auth.service';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { ToastrService } from 'ngx-toastr';
+import { DeleteUserComponent } from '../delete-user/delete-user.component';
 
 
 
@@ -28,7 +29,7 @@ export class AdminUsersComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private dialog: MatDialog,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {}
   ngOnInit(): void {
     this.loadUser();
@@ -55,15 +56,27 @@ export class AdminUsersComponent implements OnInit {
     this.dialog.open(CreateUserComponent, {
       width: '350px',
       hasBackdrop: true,
+      
     });
   }
   deleteUser(name: string) {
-    console.log('user to delete:' + name);
-    // delete this.userlist[id]
-    this.auth.deleteUser(name).subscribe((result) => {
+
+    return this.dialog.open(DeleteUserComponent, {
+      width: '350px',
+      hasBackdrop: true,
+      disableClose: true,
+      data: {
+        name: 'hollaa',
+      },
+    }).afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.auth.deleteUser(name).subscribe((result) => {
       console.log(result);
       this.toastr.success('User deleted successfully');
       this.loadUser();
+    })
+      }
+   
     });
   }
 }

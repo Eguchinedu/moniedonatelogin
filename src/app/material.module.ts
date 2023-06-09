@@ -10,6 +10,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogModule } from '@angular/cdk/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -25,7 +26,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
-    DialogModule
+    DialogModule,
+    MatIconModule
   ],
 })
 export class MaterialModule {}
