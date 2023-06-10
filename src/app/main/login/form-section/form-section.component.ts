@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { ILogin } from 'src/app/types/login';
+import { IUserRole } from 'src/app/types/user-role';
 
 @Component({
   selector: 'app-form-section',
@@ -13,6 +14,7 @@ import { ILogin } from 'src/app/types/login';
 export class FormSectioncomponent implements OnInit {
   visible: boolean = true;
   changeType: boolean = true;
+  user!:IUserRole;
 
   originalLogin: ILogin = {
     email: null,
@@ -43,21 +45,21 @@ export class FormSectioncomponent implements OnInit {
     console.log('in onSubmit: ', form.value);
     if (form.valid) {
       this.auth.login(this.login).subscribe((result) => {
-        console.log('result', result);
-        if (result.success == true && this.login.email === 'eguchinedu18@gmail.com') {
-          this.toastr.success('Logged in as admin', 'Welcome!');
+        this.user = this.auth.getUserRole(result.token);
+
+        if (result.success == true && this.user.role === 'Admin') {
+          this.toastr.success(`Logged in as ${this.user.role}`, 'Welcome!');
           this.auth.storeToken(result.token);
-          this.auth.setRoles('Admin');
+          this.auth.setRoles(this.user.role);
           this.router.navigate(['/admin']);
           console.log(result);
-        } else if (result.success == true){
-          this.toastr.success('Logged in as user', 'Welcome!');
+        } else if (result.success == true && this.user.role === 'Opera') {
+          this.toastr.success(`Logged in as ${this.user.role}`, 'Welcome!');
           this.auth.storeToken(result.token);
-          this.auth.setRoles('User');
+          this.auth.setRoles(this.user.role);
           this.router.navigate(['/user']);
         } else {
           this.toastr.error(result.errorReason, 'Error!');
-
         }
       });
     } else if (

@@ -34,7 +34,6 @@ export class CreateUserComponent implements OnInit {
 
   loadUser() {
     this.auth.getUsers().subscribe((result) => {
-      console.log(result);
       location.reload(); // refresh the page
        this.ngOnInit();
     });
@@ -49,10 +48,8 @@ export class CreateUserComponent implements OnInit {
     this.dialog.close();
   }
   onSubmit(form: NgForm) {
-    console.log('in onSubmit: ', form.value);
     if (form.valid) {
       this.auth.createUser(this.createUser).subscribe((result) => {
-        console.log('result', result);
         if (result.success == true) {
           this.closeDialog();
           this.toastr.success('User created successfully');
@@ -62,16 +59,6 @@ export class CreateUserComponent implements OnInit {
         }
         
       });
-    // } else if (
-    //   form.value.email == null ||
-    //   (form.value.email == '' && form.value.password == null) ||
-    //   form.value.password == ''
-    // ) {
-    //   this.toastr.error('Email or Password field cannot be empty', 'Error!');
-    // } else if (form.value.email == null || form.value.email == '') {
-    //   this.toastr.error('Please input your email', 'Error!');
-    // } else if (form.value.password == null || form.value.password == '') {
-    //   this.toastr.error('Please input your password', 'Error!');
     }
      else {
       this.toastr.error('Please input details', 'Error!');

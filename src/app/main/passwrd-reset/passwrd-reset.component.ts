@@ -74,11 +74,9 @@ export class PasswrdResetComponent implements OnInit {
   onSubmit() {
     if (this.resetForm.valid) {
       this.auth.resetPassword(this.resetForm.getRawValue()).subscribe((result) => {
-        console.log('result', result);
         if (result.success == true) {
           this.toastr.success('Password reset successfully', 'Success!');
           this.router.navigate(['/login']);
-          console.log(result);
         } else {
           this.toastr.error(result.errorReason, 'Error!');
         }

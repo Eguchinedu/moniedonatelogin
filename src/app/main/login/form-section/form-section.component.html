@@ -12,7 +12,7 @@
         <div class="form-group">
             <label for="email">Email</label>
             <div class="error-field">
-                <input type="email" name="email" id="email" class="login-field" placeholder="Enter your email" required [(ngModel)]="login.email"
+                <input type="email" name="email" id="email" class="login-field" placeholder="Enter your email" required [(ngModel)]="login.email" email="true"
                        #emailField="ngModel"
             />
                     <span [class]="form.submitted && emailField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
@@ -29,6 +29,9 @@
                         <span [class]="form.submitted && passwordField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
                     </div>
                 </div>
+        </div>
+        <div class="match-error">
+            <p *ngIf="emailField.errors?.['email']" class="alert alert-danger">Please type in a valid email</p>
         </div>
         <div class="form-section">
             <div class="check">

@@ -39,7 +39,6 @@ export class UserDonationsComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.donorlist);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(result);
     });
   }
 }

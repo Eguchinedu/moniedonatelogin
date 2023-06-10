@@ -44,10 +44,9 @@ export class AuthService {
   getToken() {
     return localStorage.getItem('token');
   }
-// isLoggedIn(): boolean{
-
-//   return !!localStorage.getItem('token');
-// }
+getUserRole(token: string){
+  return JSON.parse(atob(token.split('.')[1]))
+}
   isLoggedIn() {
     return this.getRoles() && this.getToken() ? true : false;
   }

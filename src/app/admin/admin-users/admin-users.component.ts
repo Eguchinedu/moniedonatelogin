@@ -48,7 +48,6 @@ export class AdminUsersComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.userlist);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(result);
     });
   }
 
@@ -71,7 +70,6 @@ export class AdminUsersComponent implements OnInit {
     }).afterClosed().subscribe((result) => {
       if (result === true) {
         this.auth.deleteUser(name).subscribe((result) => {
-      console.log(result);
       this.toastr.success('User deleted successfully');
       this.loadUser();
     })

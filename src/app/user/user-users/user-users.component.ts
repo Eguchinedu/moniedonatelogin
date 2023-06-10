@@ -40,7 +40,6 @@ export class UserUsersComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.userlist);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(result);
     });
   }
 

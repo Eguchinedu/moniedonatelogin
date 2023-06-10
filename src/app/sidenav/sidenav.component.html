@@ -1,7 +1,7 @@
 <nav *ngIf="isLoggedIn()" class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" *ngIf="setRoles('Admin')" href="#">Admin Dashboard</a>
-    <a class="navbar-brand" *ngIf="setRoles('User')" href="#">User Dashboard</a>
+    <a class="navbar-brand" *ngIf="setRoles('Opera')" href="#">Opera Dashboard</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,7 +17,7 @@
             *ngIf="setRoles('Admin')" routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/admin']" >DashBoard</a>
             <a class="nav-link" aria-current="page" 
-            *ngIf="setRoles('User')" routerLinkActive="active"
+            *ngIf="setRoles('Opera')" routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/user']" >DashBoard</a>
           </li>
           <li class="nav-item">
@@ -30,7 +30,7 @@
             *ngIf="setRoles('Admin')"
           [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/admin/admin-donations']" >Donations</a>
             <a class="nav-link" routerLinkActive="active"
-            *ngIf="setRoles('User')"
+            *ngIf="setRoles('Opera')"
           [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/user/user-donations']" >Donations</a>
           </li>
         </ul>

@@ -52,6 +52,7 @@
         </div>
         <div class="match-error">
             <p *ngIf="resetForm.errors?.['passwordmatcherror']" class="alert alert-danger">Passwords do not match!!</p>
+            <p *ngIf="resetForm.hasError('email', 'email')" class="alert alert-danger">Please type in a valid email</p>
         </div>
         
         <div class="form-section">

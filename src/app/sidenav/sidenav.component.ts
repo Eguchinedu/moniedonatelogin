@@ -12,8 +12,6 @@ export class SidenavComponent implements OnInit, DoCheck {
   isMenuRequired = false;
   constructor(private router: Router,private auth: AuthService) {}
   ngOnInit(): void {
-    console.log(this.isLoggedIn())
-    console.log(this.setRoles(''))
   }
   ngDoCheck(): void {
     let currentUrl = this.router.url;

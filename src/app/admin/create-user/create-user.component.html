@@ -37,10 +37,13 @@
             <label for="email">Email</label>
             <div class="error-field">
                 <input type="email" name="email" id="email" class="login-field" placeholder="Enter your email" required [(ngModel)]="createUser.email"
-                       #emailField="ngModel"
+                       #emailField="ngModel" email="true"
             />
                     <span [class]="form.submitted && emailField.invalid ? 'error-show' : 'error-span'"><i class="bi bi-x-circle"></i></span>
             </div>
+        </div>
+        <div class="match-error">
+            <p *ngIf="emailField.errors?.['email']" class="alert alert-danger">Please type in a valid email</p>
         </div>
         <div class="login-button">
             <button mat-raised-button color="primary" >Create</button>
