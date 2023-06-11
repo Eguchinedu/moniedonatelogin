@@ -1,5 +1,4 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import '@angular/cdk/overlay-prebuilt.css';
+
 .dialog-background {
   background-color: rgba(113, 113, 113, 0.44);
   backdrop-filter: blur(4px);
